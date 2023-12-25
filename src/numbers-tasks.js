@@ -1,57 +1,40 @@
-/* *******************************************************************************************
- *                                                                                           *
- * Please read the following tutorial before implementing tasks:                              *
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Numbers_and_dates           *
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number   *
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math     *
- *                                                                                           *
- ******************************************************************************************* */
-
-/**
- * Returns an area of a rectangle given by width and height.
- *
- * @param {number} width
- * @param {number} height
- * @return {number}
- *
- * @example:
- *   5, 10 => 50
- *   5, 5  => 25
- */
-function getRectangleArea(/* width, height */) {
-  throw new Error('Not implemented');
+/**1 */
+function getRectangleArea(width, height) {
+  return width * height;
 }
 
-/**
- * Returns a circumference of circle given by radius.
- *
- * @param {number} radius
- * @return {number}
- *
- * @example:
- *   5    => 31.41592653589793
- *   3.14 => 19.729201864543903
- *   0    => 0
- */
-function getCircleCircumference(/* radius */) {
-  throw new Error('Not implemented');
+const area1 = getRectangleArea(5, 10);
+console.log(area1);
+
+const area2 = getRectangleArea(5, 5);
+console.log(area2); 
+
+/**2 */
+
+function getCircleCircumference(radius) {
+  const circumference = 2 * Math.PI * radius;
+  return circumference;
 }
 
-/**
- * Returns an average of two given numbers.
- *
- * @param {number} value1
- * @param {number} value2
- * @return {number}
- *
- * @example:
- *   5, 5  => 5
- *  10, 0  => 5
- *  -3, 3  => 0
- */
-function getAverage(/* value1, value2 */) {
-  throw new Error('Not implemented');
+const circumference2 = getCircleCircumference(3.14);
+console.log(circumference2); 
+
+const circumference3 = getCircleCircumference(0);
+console.log(circumference3);
+
+
+/**3 */
+function getAverage(value1, value2) {
+  const average = (value1 + value2) / 2;
+  return average;
 }
+
+const avg1 = getAverage(5, 5);
+console.log(avg1);
+
+const avg3 = getAverage(-3, 3);
+console.log(avg3); 
+
 
 /**
  * Returns a distance between two points by cartesian coordinates.
