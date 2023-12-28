@@ -34,7 +34,7 @@ function getRectangleArea(width, height) {
  *   0    => 0
  */
 function getCircleCircumference(radius) {
-   return 2 * Math.PI * radius;
+  return 2 * Math.PI * radius;
 }
 
 /**
@@ -49,8 +49,8 @@ function getCircleCircumference(radius) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage( value1, value2) {
-   return (value1 + value2) / 2;
+function getAverage(value1, value2) {
+  return (value1 + value2) / 2;
 }
 
 /**
@@ -302,7 +302,10 @@ function getSumToN(n) {
  *   5   => 5  // 5
  */
 function getSumOfDigits(num) {
-  return num.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+  return num
+    .toString()
+    .split('')
+    .reduce((sum, digit) => sum + parseInt(digit), 0);
 }
 
 /**
@@ -319,6 +322,7 @@ function getSumOfDigits(num) {
 function isPowerOfTwo(num) {
   return num > 0 && (num & (num - 1)) === 0;
 }
+
 /**
  * Returns the sine of a number.
  *
@@ -624,6 +628,7 @@ function getHypotenuse(a, b) {
 function getCountOfOddNumbers(number) {
   return Math.floor((number + 1) / 2);
 }
+
 
 module.exports = {
   getRectangleArea,
