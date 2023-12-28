@@ -54,13 +54,12 @@ function getAverage(value1, value2) {
 }
 
 /**
- * Returns a distance between two points by cartesian coordinates.
+ * Returns a distance between two points by Cartesian coordinates.
  *
  * @param {number} x1
  * @param {number} y1
  * @param {number} x2
  * @param {number} y2
- *
  * @return {number}
  *
  * @example:
@@ -69,11 +68,11 @@ function getAverage(value1, value2) {
  *   (-5,0) (10,-10) => 18.027756377319946
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
-  return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+  return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
 /**
- * Returns a root of linear equation a*x + b = 0 given by coefficients a and b.
+ * Returns a root of a linear equation a*x + b = 0 given by coefficients a and b.
  *
  * @param {number} a
  * @param {number} b
@@ -90,7 +89,7 @@ function getLinearEquationRoot(a, b) {
 
 /**
  * Returns an angle (in radians) between two vectors given by xi and yi,
- * coordinates in Cartesian plane.
+ * coordinates in the Cartesian plane.
  * See details https://en.wikipedia.org/wiki/Euclidean_vector#Representations
  *
  * @param {number} x1
@@ -107,13 +106,14 @@ function getLinearEquationRoot(a, b) {
  */
 function getAngleBetweenVectors(x1, y1, x2, y2) {
   const dotProduct = x1 * x2 + y1 * y2;
-  const magnitude1 = Math.sqrt(x1 * x1 + y1 * y1);
-  const magnitude2 = Math.sqrt(x2 * x2 + y2 * y2);
+  const magnitude1 = Math.sqrt(x1 ** 2 + y1 ** 2);
+  const magnitude2 = Math.sqrt(x2 ** 2 + y2 ** 2);
+
   return Math.acos(dotProduct / (magnitude1 * magnitude2));
 }
 
 /**
- * Returns a last digit of a integer number.
+ * Returns a last digit of an integer number.
  * The input parameter will always be greater than or equal to zero and will be in decimal notation.
  *
  * @param {number} value
@@ -145,7 +145,7 @@ function parseNumberFromString(value) {
 }
 
 /**
- * Returns a diagonal length of the rectangular parallelepiped given by its sides a,b,c.
+ * Returns a diagonal length of the rectangular parallelepiped given by its sides a, b, c.
  *
  * @param {number} a
  * @param {number} b
@@ -162,7 +162,7 @@ function getParallelepipedDiagonal(a, b, c) {
 }
 
 /**
- * Returns the number rounded to specified power of 10.
+ * Returns the number rounded to the specified power of 10.
  *
  * @param {number} num
  * @param {number} pow
@@ -183,11 +183,11 @@ function roundToPowerOfTen(num, pow) {
 }
 
 /**
- * Returns true is the number is prime; otherwise false.
+ * Returns true if the number is prime; otherwise false.
  * See: https://en.wikipedia.org/wiki/Primality_test
  *
  * @param {number} n
- * @return {bool}
+ * @return {boolean}
  *
  * @example:
  *   4 => false
@@ -200,20 +200,16 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
-  if (n <= 1) {
-    return false;
-  }
+  if (n <= 1) return false;
   for (let i = 2; i <= Math.sqrt(n); i++) {
-    if (n % i === 0) {
-      return false;
-    }
+    if (n % i === 0) return false;
   }
   return true;
 }
 
 /**
  * Tries to convert value to number and returns it if conversion was successful;
- * otherwise returns default value passed as a second argument.
+ * otherwise returns the default value passed as a second argument.
  *
  * @param {any} value
  * @param {any} def
@@ -260,19 +256,11 @@ function getCube(num) {
  *   10 => 55
  */
 function getFibonacciNumber(index) {
-  if (index === 0) return 0;
-  if (index === 1) return 1;
-
-  let prev = 0;
-  let current = 1;
-
-  for (let i = 2; i <= index; i++) {
-    const next = prev + current;
-    prev = current;
-    current = next;
+  let a = 0, b = 1;
+  for (let i = 0; i < index; i++) {
+    [a, b] = [b, a + b];
   }
-
-  return current;
+  return a;
 }
 
 /**
@@ -305,7 +293,7 @@ function getSumOfDigits(num) {
   return num
     .toString()
     .split('')
-    .reduce((sum, digit) => sum + parseInt(digit), 0);
+    .reduce((sum, digit) => sum + parseInt(digit, 10), 0);
 }
 
 /**
@@ -583,6 +571,7 @@ function getSumOfNumbers(x1, x2, x3) {
 function getMaxNumber(firstNumber, secondNumber) {
   return Math.max(firstNumber, secondNumber);
 }
+
 /**
  * Returns a random integer in the range from min to max.
  *
@@ -598,6 +587,7 @@ function getMaxNumber(firstNumber, secondNumber) {
 function getRandomInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 /**
  * Returns the length of the hypotenuse of a right triangle.
  *
@@ -628,6 +618,7 @@ function getHypotenuse(a, b) {
 function getCountOfOddNumbers(number) {
   return Math.floor((number + 1) / 2);
 }
+
 
 
 module.exports = {
