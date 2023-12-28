@@ -1,22 +1,40 @@
+/* *******************************************************************************************
+ *                                                                                           *
+ * Please read the following tutorial before implementing tasks:                              *
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Numbers_and_dates           *
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number   *
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math     *
+ *                                                                                           *
+ ******************************************************************************************* */
+
 /**
  * Returns an area of a rectangle given by width and height.
  *
  * @param {number} width
  * @param {number} height
  * @return {number}
+ *
+ * @example:
+ *   5, 10 => 50
+ *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
   return width * height;
 }
 
 /**
- * Returns a circumference of a circle given by radius.
+ * Returns a circumference of circle given by radius.
  *
  * @param {number} radius
  * @return {number}
+ *
+ * @example:
+ *   5    => 31.41592653589793
+ *   3.14 => 19.729201864543903
+ *   0    => 0
  */
 function getCircleCircumference(radius) {
-  return 2 * Math.PI * radius;
+   return 2 * Math.PI * radius;
 }
 
 /**
@@ -25,9 +43,14 @@ function getCircleCircumference(radius) {
  * @param {number} value1
  * @param {number} value2
  * @return {number}
+ *
+ * @example:
+ *   5, 5  => 5
+ *  10, 0  => 5
+ *  -3, 3  => 0
  */
-function getAverage(value1, value2) {
-  return (value1 + value2) / 2;
+function getAverage( value1, value2) {
+   return (value1 + value2) / 2;
 }
 
 /**
@@ -37,7 +60,13 @@ function getAverage(value1, value2) {
  * @param {number} y1
  * @param {number} x2
  * @param {number} y2
+ *
  * @return {number}
+ *
+ * @example:
+ *   (0,0) (0,1)    => 1
+ *   (0,0) (1,0)    => 1
+ *   (-5,0) (10,-10) => 18.027756377319946
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
   return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
@@ -49,6 +78,11 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  * @param {number} a
  * @param {number} b
  * @return {number}
+ *
+ * @example:
+ *   5*x - 10 = 0    => 2
+ *   x + 8 = 0       => -8
+ *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
   return -b / a;
@@ -57,15 +91,25 @@ function getLinearEquationRoot(a, b) {
 /**
  * Returns an angle (in radians) between two vectors given by xi and yi,
  * coordinates in Cartesian plane.
+ * See details https://en.wikipedia.org/wiki/Euclidean_vector#Representations
  *
  * @param {number} x1
  * @param {number} y1
  * @param {number} x2
  * @param {number} y2
  * @return {number}
+ *
+ * @example:
+ *   (1,0) (0,1)     => π/2
+ *   (0,1) (0,-1)    => π
+ *   (0,-1) (1,0)    => π/2
+ *   (0,1) (0,1)     => 0
  */
 function getAngleBetweenVectors(x1, y1, x2, y2) {
-  return Math.atan2(y2 - y1, x2 - x1);
+  const dotProduct = x1 * x2 + y1 * y2;
+  const magnitude1 = Math.sqrt(x1 * x1 + y1 * y1);
+  const magnitude2 = Math.sqrt(x2 * x2 + y2 * y2);
+  return Math.acos(dotProduct / (magnitude1 * magnitude2));
 }
 
 /**
@@ -74,6 +118,12 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *
  * @param {number} value
  * @return {number}
+ *
+ * @example:
+ *   100     => 0
+ *    37     => 7
+ *     5     => 5
+ *     0     => 0
  */
 function getLastDigit(value) {
   return value % 10;
@@ -84,6 +134,11 @@ function getLastDigit(value) {
  *
  * @param {string} value
  * @return {number}
+ *
+ * @example:
+ *    '100'     => 100
+ *     '37'     => 37
+ * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
   return parseFloat(value);
@@ -96,9 +151,14 @@ function parseNumberFromString(value) {
  * @param {number} b
  * @param {number} c
  * @return {number}
+ *
+ * @example:
+ *   1,1,1   => 1.7320508075688772
+ *   3,3,3   => 5.196152422706632
+ *   1,2,3   => 3.741657386773941
  */
 function getParallelepipedDiagonal(a, b, c) {
-  return Math.sqrt(a**2 + b**2 + c**2);
+  return Math.sqrt(a ** 2 + b ** 2 + c ** 2);
 }
 
 /**
@@ -107,21 +167,46 @@ function getParallelepipedDiagonal(a, b, c) {
  * @param {number} num
  * @param {number} pow
  * @return {number}
+ *
+ * @example:
+ *   1234, 0  => 1234
+ *   1234, 1  => 1230
+ *   1234, 2  => 1200
+ *   1234, 3  => 1000
+ *   1678, 0  => 1678
+ *   1678, 1  => 1680
+ *   1678, 2  => 1700
+ *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-  return Math.round(num / 10**pow) * 10**pow;
+  return Math.round(num / 10 ** pow) * 10 ** pow;
 }
 
 /**
- * Returns true if the number is prime; otherwise false.
+ * Returns true is the number is prime; otherwise false.
+ * See: https://en.wikipedia.org/wiki/Primality_test
  *
  * @param {number} n
  * @return {bool}
+ *
+ * @example:
+ *   4 => false
+ *   5 => true
+ *   6 => false
+ *   7 => true
+ *   11 => true
+ *   12 => false
+ *   16 => false
+ *   17 => true
  */
 function isPrime(n) {
-  if (n <= 1) return false;
+  if (n <= 1) {
+    return false;
+  }
   for (let i = 2; i <= Math.sqrt(n); i++) {
-    if (n % i === 0) return false;
+    if (n % i === 0) {
+      return false;
+    }
   }
   return true;
 }
@@ -133,10 +218,17 @@ function isPrime(n) {
  * @param {any} value
  * @param {any} def
  * @return {number}
+ *
+ * @example
+ *   toNumber(null, 0) => 0
+ *   toNumber('test', 0) => 0
+ *   toNumber('1', 0) => 1
+ *   toNumber(42, 0) => 42
+ *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-  const result = parseFloat(value);
-  return isNaN(result) ? def : result;
+  const convertedValue = Number(value);
+  return isNaN(convertedValue) ? def : convertedValue;
 }
 
 /**
@@ -144,6 +236,11 @@ function toNumber(value, def) {
  *
  * @param {number} num
  * @return {number}
+ *
+ * @example:
+ *   3  => 27
+ *   -2 => -8
+ *   0  => 0
  */
 function getCube(num) {
   return num ** 3;
@@ -154,13 +251,28 @@ function getCube(num) {
  *
  * @param {number} index
  * @return {number}
+ *
+ * @example:
+ *   0  => 0
+ *   1  => 1
+ *   2  => 1
+ *   3  => 2
+ *   10 => 55
  */
 function getFibonacciNumber(index) {
-  let a = 0, b = 1;
-  for (let i = 0; i < index; i++) {
-    [a, b] = [b, a + b];
+  if (index === 0) return 0;
+  if (index === 1) return 1;
+
+  let prev = 0;
+  let current = 1;
+
+  for (let i = 2; i <= index; i++) {
+    const next = prev + current;
+    prev = current;
+    current = next;
   }
-  return a;
+
+  return current;
 }
 
 /**
@@ -168,6 +280,11 @@ function getFibonacciNumber(index) {
  *
  * @param {number} n
  * @return {number}
+ *
+ * @example:
+ *   5  => 15 // (1+2+3+4+5)
+ *   10 => 55 // (1+2+3+...+10)
+ *   1  => 1
  */
 function getSumToN(n) {
   return (n * (n + 1)) / 2;
@@ -178,6 +295,11 @@ function getSumToN(n) {
  *
  * @param {number} num
  * @return {number}
+ *
+ * @example:
+ *   123 => 6  // (1+2+3)
+ *   202 => 4  // (2+0+2)
+ *   5   => 5  // 5
  */
 function getSumOfDigits(num) {
   return num.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
@@ -188,16 +310,24 @@ function getSumOfDigits(num) {
  *
  * @param {number} num
  * @return {boolean}
+ *
+ * @example:
+ *   4   => true
+ *   16  => true
+ *   15  => false
  */
 function isPowerOfTwo(num) {
-  return (num & (num - 1)) === 0 && num !== 0;
+  return num > 0 && (num & (num - 1)) === 0;
 }
-
 /**
  * Returns the sine of a number.
  *
  * @param {number} num
  * @return {number}
+ *
+ * @example:
+ *   0 => 0
+ *   Math.PI / 2 => 1
  */
 function getSine(num) {
   return Math.sin(num);
@@ -209,6 +339,10 @@ function getSine(num) {
  * @param {number} number
  * @param {number} base
  * @return {string}
+ *
+ * @example:
+ * 255, 16 => 'ff'
+ * 2, 2    => '10'
  */
 function numberToStringInBase(number, base) {
   return number.toString(base);
@@ -220,6 +354,9 @@ function numberToStringInBase(number, base) {
  * @param {number} number
  * @param {number} fractionDigits
  * @return {string}
+ *
+ * @example:
+ * 12345, 2    => '1.23e+4'
  */
 function toExponential(number, fractionDigits) {
   return number.toExponential(fractionDigits);
@@ -231,6 +368,10 @@ function toExponential(number, fractionDigits) {
  * @param {number} number
  * @param {number} fractionDigits
  * @return {string}
+ *
+ * @example:
+ * 12345, 2    => '12345.00'
+ * 12.345, 1   => '12.3'
  */
 function toFixed(number, fractionDigits) {
   return number.toFixed(fractionDigits);
@@ -243,6 +384,10 @@ function toFixed(number, fractionDigits) {
  * @param {number} number
  * @param {number} precision
  * @return {string}
+ *
+ * @example:
+ * 12345, 7    => '12345.00'
+ * 12.345, 4   => '12.35'
  */
 function toPrecision(number, precision) {
   return number.toPrecision(precision);
@@ -253,12 +398,232 @@ function toPrecision(number, precision) {
  *
  * @param {Number} number
  * @return {number}
+ *
+ * @example:
+ * new Number(5) => 5
+ * Number(-5)    => -5
  */
 function getNumberValue(number) {
   return number.valueOf();
 }
 
+/**
+ * Returns a boolean value indicating whether the parameter is a number or not.
+ *
+ * @param {number} number
+ * @return {boolean}
+ *
+ * @example:
+ * Infinity => false
+ * NaN      => false
+ * 0        => true
+ * 'a' / 1  => false
+ * 'a'      => false
+ * 5        => true
+ * '5'      => false
+ */
+function isNumber(number) {
+  return typeof number === 'number' && isFinite(number) && !isNaN(number);
+}
 
+/**
+ * Returns a boolean value indicating whether a number is an integer or not.
+ *
+ * @param {number} number
+ * @return {boolean}
+ *
+ * @example:
+ * 5    => true
+ * 5.1  => false
+ * '5'  => false
+ */
+function isInteger(number) {
+  return Number.isInteger(number);
+}
+
+/**
+ * Returns a floating point number or, if the number cannot be parsed from the argument, returns NaN.
+ *
+ * @param {string} str
+ * @return {number | NaN}
+ *
+ * @example:
+ * '4.567abcdefgh' => 4.567
+ * 'abcdefgh'      => NaN
+ */
+function getFloatOnString(str) {
+  const floatNumber = parseFloat(str);
+  return isNaN(floatNumber) ? NaN : floatNumber;
+}
+
+/**
+ * Returns an integer of the specified base or, if the number cannot be parsed
+ * from the argument, returns NaN.
+ *
+ * @param {string} str
+ * @param {number} base
+ * @return {number | NaN}
+ *
+ * @example:
+ * '4.567abcdefgh', 10  => 4
+ * 'abcdefgh', 10       => NaN
+ * '1.234', 2           => 1
+ * '10', 8              => 8
+ */
+function getIntegerOnString(str, base) {
+  const parsedInt = parseInt(str, base);
+  return isNaN(parsedInt) ? NaN : parsedInt;
+}
+
+/**
+ * Returns whether a number is a safe integer.
+ *
+ * @param {number} number
+ * @return {boolean}
+ *
+ * @example:
+ * 10       => true
+ * 3.5      => false
+ * 2 ** 53  => false
+ */
+function isSafeInteger(number) {
+  return Number.isSafeInteger(number);
+}
+
+/**
+ * Returns the smallest integer less than or equal to a given number.
+ *
+ * @param {number} number
+ * @return {number}
+ *
+ * @example:
+ * 5.9  => 5
+ * -5.1 => -6
+ */
+function roundToSmallestInteger(number) {
+  return Math.floor(number);
+}
+
+/**
+ * Returns the largest integer greater than or equal to a given number.
+ *
+ * @param {number} number
+ * @return {number}
+ *
+ * @example:
+ * 5.1  => 6
+ * -5.9 => -5
+ */
+function roundToLargestInteger(number) {
+  return Math.ceil(number);
+}
+
+/**
+ * Returns the value of a number rounded to the nearest integer.
+ *
+ * @param {number} number
+ * @return {number}
+ *
+ * @example:
+ * 5.5  => 6
+ * 5.4  => 5
+ * -5.5 => -5
+ */
+function roundToNearestInteger(number) {
+  return Math.round(number);
+}
+
+/**
+ * Returns the integer part of a number by removing any fractional digits.
+ *
+ * @param {number} number
+ * @return {number}
+ *
+ * @example:
+ * 5.5  => 5
+ * 5.4  => 5
+ * -5.5 => -5
+ */
+function getIntegerPartNumber(number) {
+  return parseInt(number);
+}
+
+/**
+ * Returns the sum of numbers.
+ *
+ * @param {number} x1
+ * @param {number} x2
+ * @param {number} x3
+ * @returns {number}
+ *
+ * @example:
+ * 1, 2, 3       => 6
+ * 0.1, 0.2, 0.3 => 0.6
+ */
+function getSumOfNumbers(x1, x2, x3) {
+  return x1 + x2 + x3;
+}
+
+/**
+ * Returns the largest number.
+ *
+ * @param {number} firstNumber
+ * @param {number} secondNumber
+ * @return {number}
+ *
+ * @example:
+ * 1, 2   => 2
+ * -5, -6 => -5
+ * 0, 5   => 5
+ */
+function getMaxNumber(firstNumber, secondNumber) {
+  return Math.max(firstNumber, secondNumber);
+}
+/**
+ * Returns a random integer in the range from min to max.
+ *
+ * @param {number} min
+ * @param {number} max
+ * @return {number}
+ *
+ * @example:
+ * 1, 2  => 1 | 2
+ * -5, 0 => -5 | -4 | -3 | -2 | -1 | 0
+ * -1, 1 => -1 | 0 | 1
+ */
+function getRandomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+/**
+ * Returns the length of the hypotenuse of a right triangle.
+ *
+ * @param {number} a
+ * @param {number} b
+ * @return {number}
+ *
+ * @example:
+ * 3, 4 => 5
+ */
+function getHypotenuse(a, b) {
+  return Math.sqrt(a ** 2 + b ** 2);
+}
+
+/**
+ * Returns count of odd numbers from zero to the resulting number.
+ * The resulting number is taken into account.
+ *
+ * @param {number} number
+ * @return {number}
+ *
+ * @example:
+ * 4  => 2
+ * 5  => 3
+ * 10 => 5
+ * 15 => 8
+ */
+function getCountOfOddNumbers(number) {
+  return Math.floor((number + 1) / 2);
+}
 
 module.exports = {
   getRectangleArea,
